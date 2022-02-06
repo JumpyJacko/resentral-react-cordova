@@ -10,11 +10,10 @@ Also, this reSentral was developed with The Forest Highschool's timetable
 colours, but it is possible to fork and develop a branch for other schools if
 that is wanted.
 
-# Developing for this Project
+## Developing for this Project
 Good luck lol, I learnt the basics of React two days into making this project.
 
-# Build from source (but I don't know how to write the guide for building from
-source)
+## Build from source (but I don't know how to write the guide for building from source)
 You need a full android development environment set up, follow [Cordova's guide](https://cordova.apache.org/docs/en/10.x/guide/platforms/android/)
 on how to do that.
 
