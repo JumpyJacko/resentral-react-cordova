@@ -13,6 +13,10 @@ that is wanted.
 ## Developing for this Project
 Good luck lol, I learnt the basics of React two days into making this project.
 
+Oh, and this project runs off of another project named [resentral-server](https://github.com/JumpyJacko/resentral-server)
+but is currently private on Github and is running on a free [heroku](https://www.heroku.com/)
+server.
+
 ## Build from source (but I don't know how to write the guide for building from source)
 You need a full android development environment set up, follow [Cordova's guide](https://cordova.apache.org/docs/en/10.x/guide/platforms/android/)
 on how to do that.
