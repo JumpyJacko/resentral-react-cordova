@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+.App {
+    background-color: #2E3440;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Open Sans', sans-serif;
+    font-size: calc(10px + 2vmin);
+    color: #ECEFF4;
+}
+
+.App-link {
+    color: #81A1C1;
+}
+
+.header {
+    display: flex;
+    height: 114px;
+    padding-bottom: 15px;
+}
+
+/* Timetable Page Styles */
+.timetable-title {
+    position: absolute;
+    width: 187px;
+    height: 98px;
+    left: 23px;
+    top: 20px;
+
+    font-size: 36px;
+    line-height: 49px;
+
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.dayoftheweek {
+    position: absolute;
+    width: 70px;
+    height: 25px;
+    right: 23px;
+    top: 88px;
+
+    font-size: 18px;
+    line-height: 25px;
+
+    text-align: right;
+}
+
+.timetable-container {
+    padding-bottom: 150px;
+}
+
+.timetable-card-container {
+    display: flex;
+    position: relative;
+    margin-bottom: 15px;
+}
+
+/* Timetable Card Styles */
+.timetable-card {
+    display: flex;
+    position: relative;
+    width: 244px;
+    height: 84px;
+    left: 23px;
+
+    color: #ECEFF4;
+    background: rgba(76, 86, 106, 0.75);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.side-block {
+    width: 10px;
+    height: 84px;
+    background: #3B4252;
+}
+
+.timetable-text {
+    padding-left: 8px;
+    width: 226px;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    position: relative;
+}
+
+.timetable-class {
+    font-size: 24px;
+}
+
+.timetable-room {
+    font-size: 14px;
+    color: #D7D7D7;
+}
+
+.timetable-teacher {
+    font-size: 18px;
+}
+
+.timetable-times {
+    position: absolute;
+    width: 92px;
+    height: 25px;
+    right: 8px;
+    top: 54px;
+
+    font-size: 14px;
+    color: #D7D7D7;
+    line-height: 25px;
+
+    text-align: right;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* Period Card Styles */
+.period {
+    position: absolute;
+    display: flex;
+    width: 67px;
+    height: 84px;
+    top: 0px;
+    left: 287px;
+
+    background: #323946;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: #ECEFF4;
+    font-size: 36px;
+
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Separator Styles */
+.separator {
+    display: flex;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.separator-bar {
+    flex-grow: 1;
+}
+
+/* Announcements Page */
+.announcement-header {
+    text-align: center;
+    font-size: calc(12px + 2vmin);
+}
