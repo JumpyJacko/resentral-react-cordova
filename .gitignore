@@ -22,5 +22,6 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# credentials
+# keeping my credentials safe
 src/components/login.js
+cordova/www/static
