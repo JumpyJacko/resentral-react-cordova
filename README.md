@@ -23,6 +23,7 @@ Otherwise, the brief overview is to:
 3. Run `npm run build` in the root directory
 4. Copy the `build/` folder's components to `cordova/www` and replacing what is
    needed to be replaced
-5. Run `cordova platform add android`
-6. Run `cordova build android`
-7. Installing the apk in the directory which is output from the `build` command
+5. Run `cordova prepare` in the `cordova/` directory
+6. Run `cordova platform add android` in the `cordova/` directory
+7. Run `cordova build android` in the `cordova/` directory
+8. Installing the apk in the directory which is output from the `build` command
