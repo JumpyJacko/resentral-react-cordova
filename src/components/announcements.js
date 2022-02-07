@@ -60,10 +60,14 @@ class Announcements extends React.Component {
         let content = [];
         for (let i = 0; i < data.length; i++) {
             content.push(
-                <div>
-                    <div className="announcement-header">{data[i].title}, {data[i].author}</div>
-                    <div className="announcement-body" dangerouslySetInnerHTML={{ __html: data[i].body }}></div>
-                </div>
+                    <div className="announcement-card">
+                        <div className="announcement-side-block"></div>
+                        <div className="announcement-text">
+                            <div className="announcement-title">{data[i].title}</div>
+                            <div className="announcement-author">{data[i].author}</div>
+                            <div className="announcement-body" dangerouslySetInnerHTML={{ __html: data[i].body }}></div>
+                        </div>
+                    </div>
             );
         }
         return content;
@@ -71,15 +75,20 @@ class Announcements extends React.Component {
 
     render() {
         const { data, isLoading } = this.state;
+        const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 
         return(
             <div className="container">
+                <div className="header">
+                    <div className="timetable-title">Today's Annoucements</div>
+                    <div className="dayoftheweek">{weekday[new Date().getDay()]}</div>
+                </div>
                 {isLoading ? <Dots /> : (
                     <FlatList 
                         list={data}
                         renderItem={() => (
-                            <div>
-                            {this.renderContent(data)}
+                            <div className="announcement-container">
+                                {this.renderContent(data)}
                             </div>
                         )}
                         renderWhenEmpty={() => <div>No annoucements for today.</div>}

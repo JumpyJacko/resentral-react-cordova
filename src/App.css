@@ -5,15 +5,22 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
     font-family: 'Open Sans', sans-serif;
-    font-size: calc(10px + 2vmin);
     color: #ECEFF4;
 }
 
-.App-link {
+a {
     color: #81A1C1;
+    width: 100;
+    display: block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.rai-container {
+    text-align: center;
 }
 
 .header {
@@ -26,25 +33,20 @@
 .timetable-title {
     position: absolute;
     width: 187px;
-    height: 98px;
     left: 23px;
     top: 20px;
 
     font-size: 36px;
-    line-height: 49px;
 
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .dayoftheweek {
     position: absolute;
-    width: 70px;
-    height: 25px;
     right: 23px;
     top: 88px;
 
     font-size: 18px;
-    line-height: 25px;
 
     text-align: right;
 }
@@ -57,15 +59,17 @@
     display: flex;
     position: relative;
     margin-bottom: 15px;
+    margin-left: 23px;
+    margin-right: 23px;
 }
 
 /* Timetable Card Styles */
 .timetable-card {
     display: flex;
     position: relative;
-    width: 244px;
     height: 84px;
-    left: 23px;
+    flex-grow: 2;
+    margin-right: calc(10px + 2vmin);
 
     color: #ECEFF4;
     background: rgba(76, 86, 106, 0.75);
@@ -100,10 +104,8 @@
 
 .timetable-times {
     position: absolute;
-    width: 92px;
-    height: 25px;
-    right: 8px;
     top: 54px;
+    right: 8px;
 
     font-size: 14px;
     color: #D7D7D7;
@@ -115,12 +117,11 @@
 
 /* Period Card Styles */
 .period {
-    position: absolute;
     display: flex;
     width: 67px;
     height: 84px;
+    right: 23px;
     top: 0px;
-    left: 287px;
 
     background: #323946;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -143,8 +144,56 @@
     flex-grow: 1;
 }
 
-/* Announcements Page */
-.announcement-header {
-    text-align: center;
-    font-size: calc(12px + 2vmin);
+/* Announcements Card Styles */
+.announcement-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    margin-bottom: 150px;
+    margin-left: 23px;
+    margin-right: 23px;
+}
+
+.announcement-card {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 2;
+    background: #434C5E;
+    
+    min-width: 0;
+    margin-bottom: 15px;
+
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.announcement-side-block {
+    min-width: 10px;
+    height: 100;
+    background: #3B4252;
+}
+
+.announcement-text {
+    padding-left: 8px;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    position: relative;
+
+    min-width: 0;
+}
+
+.announcement-author {
+    font-size: 18px;
+    color: #D7D7D7;
+
+    min-width: 0;
+}
+
+.announcement-title {
+    font-size: 24px;
+
+    min-width: 0;
+}
+
+.announcement-body {
+    font-size: 16px;
+    min-width: 0;
 }
