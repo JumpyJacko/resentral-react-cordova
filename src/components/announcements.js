@@ -5,8 +5,6 @@ import 'react-activity/dist/Dots.css';
 import FlatList from 'flatlist-react';
 import '../App.css';
 
-import login from './login.js';
-
 class Announcements extends React.Component {
     constructor(props) {
         super(props);
@@ -28,8 +26,8 @@ class Announcements extends React.Component {
                 },
                 body: new TextEncoder().encode(
                     JSON.stringify({
-                        username: login.username,
-                        password: login.password
+                        username: window.localStorage.getItem('username'),
+                        password: window.localStorage.getItem('password')
                     })
                 ),
             })

@@ -2,11 +2,15 @@ import React from 'react';
 import '../App.css';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import InputAdornment from '@mui/material/InputAdornment';
+import IconButton from '@mui/material/IconButton';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { withStyles } from '@mui/styles';
 
 const styles = {
@@ -17,16 +21,17 @@ const styles = {
             boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.3)",
         },
     },
-    inputroot: {
-        background: "#3B4252",
-    },
-    input: {
-        color: "#ECEFF4",
-    }
 }
 
 function Settings(props) {
     const [open, setOpen] = React.useState(false);
+    const [showPassword, setShowPassword] = React.useState(false);
+    let [login, setLogin] = React.useState({
+        username: '',
+        password: ''
+    });
+
+    const handleClickShowPassword = () => setShowPassword(!showPassword);
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -37,8 +42,18 @@ function Settings(props) {
     }
 
     const handleLogin = () => {
+        window.localStorage.setItem('username', login.username);
+        window.localStorage.setItem('password', login.password);
         setOpen(false);
     }
+
+    function handleChange(e) {
+        const value = e.target.value;
+        setLogin({
+            ...login,
+            [e.target.id]: value
+        });
+    };
 
     return(
         <div>
@@ -68,29 +83,55 @@ function Settings(props) {
                         </DialogContentText>
                         <TextField
                             autoFocus
+                            onChange={handleChange}
                             id="username"
                             label="Username"
-                            type="username"
-                            className={props.classes.inputroot}
+                            type="text"
                             fullWidth
-                            multiline
                             variant="standard"
-                            required
+                            margin="normal"
                             InputProps={{
-                                className: props.classes.input
+                                style: {
+                                    color: '#ECEFF4',
+                                    textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+                                },
+                            }}
+                            InputLabelProps={{
+                                style: {
+                                    color: '#A8A8A8',
+                                    textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+                                },
                             }}
                         />
                         <TextField
+                            onChange={handleChange}
                             id="password"
                             label="Password"
-                            type="password"
-                            className={props.classes.inputroot}
+                            type={showPassword ? "text" : "password"}
                             fullWidth
-                            multiline
                             variant="standard"
-                            required
                             InputProps={{
-                                className: props.classes.input
+                                endAdornment: (
+                                    <InputAdornment position="end">
+                                        <IconButton
+                                            aria-label="toggle password visibility"
+                                            onClick={handleClickShowPassword}
+                                            style={{ color: "#ECEFF4" }}
+                                        >
+                                            {showPassword ? <Visibility /> : <VisibilityOff />}
+                                        </IconButton>
+                                    </InputAdornment>
+                                ),
+                                style: {
+                                    color: '#ECEFF4',
+                                    textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+                                },
+                            }}
+                            InputLabelProps={{
+                                style: {
+                                    color: '#A8A8A8',
+                                    textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+                                },
                             }}
                         />
                     </DialogContent>

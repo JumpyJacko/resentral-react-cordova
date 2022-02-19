@@ -5,8 +5,6 @@ import 'react-activity/dist/Dots.css';
 import FlatList from 'flatlist-react';
 import '../App.css';
 
-import login from './login.js';
-
 class FullTimetable extends React.Component {
     constructor(props) {
         super(props);
@@ -32,8 +30,8 @@ class FullTimetable extends React.Component {
                 },
                 body: new TextEncoder().encode(
                     JSON.stringify({
-                        username: login.username,
-                        password: login.password
+                        username: window.localStorage.getItem('username'),
+                        password: window.localStorage.getItem('password')
                     })
                 ),
             })
@@ -202,7 +200,7 @@ class FullTimetable extends React.Component {
         return(
             <div className="timetable-container" style={{width: isLoading ? 'auto' : '100%'}}>
                 <div className="header">
-                    <div className="timetable-title">Today's Timetable</div>
+                    <div className="timetable-title">Full Timetable</div>
                     <div className="dayoftheweek">{weekday[new Date().getDay()]}</div>
                 </div>
                 {isLoading ? <Dots /> : (
@@ -213,7 +211,7 @@ class FullTimetable extends React.Component {
                             {this.renderContent(data)}
                             </div>
                         )}
-                        renderWhenEmpty={() => <div>Error getting timetable (Check your username and password)</div>}
+                        renderWhenEmpty={() => <div>Not a feature yet!</div>}
                         limit={1}
                     />
                 )}
