@@ -23,5 +23,4 @@ yarn-debug.log*
 yarn-error.log*
 
 # keeping my credentials safe
-src/components/login.js
 cordova/www/static
