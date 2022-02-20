@@ -22,6 +22,7 @@
   },
   "devDependencies": {
     "cordova-android": "^10.1.1",
-    "cordova-plugin-navigationbar-color": "^0.1.0"
+    "cordova-plugin-navigationbar-color": "^0.1.0",
+    "cordova-plugin-webintent": "^0.0.2"
   }
 }

@@ -4,7 +4,7 @@ Student and School Management system, [Sentral](https://www.sentral.com.au/)
 as well as a mobile client for it.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
-and is wrapped with [Cordova](https://cordova.apache.org/).
+and is wrapped(?) with [Cordova](https://cordova.apache.org/).
 
 Also, this reSentral was developed with The Forest Highschool's timetable
 colours, but it is possible to fork and develop a branch for other schools if
