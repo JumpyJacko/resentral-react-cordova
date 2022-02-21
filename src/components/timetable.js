@@ -124,18 +124,27 @@ class Timetable extends React.Component {
     determineColour(subject) {
         switch(subject) {
             case "Mathematics":
-                return "rgb(191, 97, 106)";
+            case "Maths":
+                return "rgb(191, 97, 106)";   // Red
+            case "Sport":
+                return "rgb(208, 135, 112)"   // Orange
             case "English":
-                return "rgb(235, 203, 139)";
+                return "rgb(235, 203, 139)";  // Yellow
             case "Japanese":
-                return "rgb(163, 190, 140)";
+                return "rgb(163, 190, 140)";  // Green
             case "Engineering":
             case "Industrial":
-                return "rgb(94, 129, 172)";
+            case "Multimedia":
+            case "Timber":
+                return "rgb(94, 129, 172)";   // Blue
             case "Chemistry":
             case "Biology":
             case "Physics":
-                return "rgb(136, 192, 208)";
+            case "Science":
+                return "rgb(136, 192, 208)";  // Light Blue
+            case "HSIE":
+            case "Visual":
+                return "rgb(180, 142, 173)";  // Purple
             default:
                 return "#3B4252";
         }
