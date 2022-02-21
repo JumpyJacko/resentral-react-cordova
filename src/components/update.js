@@ -1,5 +1,6 @@
 import React from 'react';
 import '../App.css';
+import 'react-activity/dist/Dots.css';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -21,7 +22,7 @@ const styles = {
 }
 function Update(props) {
     const [open, setOpen] = React.useState(false);
-    const [isLatest, setIsLatest] = React.useState();
+    const [isLatest, setIsLatest] = React.useState(true);
     const [remoteVersion, setRemoteVersion] = React.useState('');
 
     const handleClickOpen = () => {
@@ -39,10 +40,10 @@ function Update(props) {
                 method: 'GET',
             })
             const placeholder = await response.json();
-            setRemoteVersion(placeholder.version);
-            const local_version = info.version;
-            if (remoteVersion === local_version) {
-                setIsLatest(true);
+            setRemoteVersion(placeholder.version.toString());
+            const local_version = info.version.toString();
+            if (remoteVersion != local_version) {
+                setIsLatest(false);
             }
         } catch (err) {
             console.log(err);
@@ -75,10 +76,12 @@ function Update(props) {
                     ) : (
                         <DialogContent>
                             <DialogContentText style={{color: '#D7D7D7'}}>
-                                New version(?) (current: v{info.version}, new: v{remoteVersion})
+                                New version? Check if it matches because this is buggy right now.
+                                <br />
+                                (current: v{info.version}, new: v{remoteVersion})
                                 <br />
                                 <br />
-                                <a href="https://github.com/JumpyJacko/resentral-react-cordova/releases">Download it</a>
+                                <a href={`https://github.com/JumpyJacko/resentral-react-cordova/releases/tag/` + remoteVersion}>Download it</a>
                             </DialogContentText>
                         </DialogContent>
                     )}
