@@ -41,7 +41,7 @@ function Update(props) {
             const placeholder = await response.json();
             setRemoteVersion(placeholder.version);
             const local_version = info.version;
-            if (remoteVersion == local_version) {
+            if (remoteVersion === local_version) {
                 setIsLatest(true);
             }
         } catch (err) {
