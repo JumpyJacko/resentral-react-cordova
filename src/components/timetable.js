@@ -178,7 +178,23 @@ class Timetable extends React.Component {
 
     renderContent(data) {
         let content = [];
+        let period_counter = 1;
         for (let i = 0; i < data.length; i++) {
+            const free_period = [
+                {
+                    "period": period_counter.toString(),
+                    "subject": "N/A",
+                    "class": "Free Period",
+                    "room": "N/A",
+                    "teacher": "N/A"
+                }
+            ]
+            if (data[i].period != "Before") {
+                if (data[i].period != period_counter) {
+                    data.splice(i, 0, ...free_period);
+                }
+                period_counter += 1;
+            }
             content.push(
                 <div>
                     <div className="timetable-card-container">
