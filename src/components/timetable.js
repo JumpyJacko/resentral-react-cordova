@@ -3,6 +3,8 @@ import { v4 as uuidv4 } from 'uuid';
 import Dots from 'react-activity/dist/Dots';
 import 'react-activity/dist/Dots.css';
 import FlatList from 'flatlist-react';
+import CachedIcon from '@mui/icons-material/Cached';
+import IconButton from '@mui/material/IconButton';
 import '../App.css';
 
 class Timetable extends React.Component {
@@ -14,7 +16,6 @@ class Timetable extends React.Component {
         this.addSeparator = this.addSeparator.bind(this);
 
         this.state = {
-            data: [],
             responseStatus: false,
             isLoading: true,
         }
@@ -22,6 +23,8 @@ class Timetable extends React.Component {
 
     async getDailyTimetable() {
         try {
+            this.setState({ isLoading: true });
+            window.localStorage.removeItem('timetablePersist');
             let uuid = uuidv4();
             const response = await fetch('https://resentral-server.herokuapp.com/api/daily_timetable/' + uuid, {
                 method: 'POST',
@@ -39,13 +42,36 @@ class Timetable extends React.Component {
                 method: 'DELETE',
             });
             const timetable = await response.json();
+            this.setWithExpiry('timetablePersist', timetable.response);
             new Promise(resolve => setTimeout(resolve, 5000));
-            this.setState({ data: timetable.response });
         } catch (err) {
             console.error(err);
         } finally {
-            this.setState({ isLoading: false });
+            this.setState({ isLoading: false })
         }
+    }
+
+    setWithExpiry(key, value) {
+        const now = new Date().getDate();
+        const item = {
+            value: value,
+            expiry: now,
+        };
+        window.localStorage.setItem(key, JSON.stringify(item));
+    }
+
+    getWithExpiry(key) {
+        const itemStr = window.localStorage.getItem(key);
+        if (!itemStr) {
+            return null;
+        };
+        const item = JSON.parse(itemStr);
+        const now = new Date().getDate();
+        if (now != item.expiry) {
+            localStorage.removeItem(key);
+            return null;
+        }
+        return item.value;
     }
 
     times(period) {
@@ -172,10 +198,6 @@ class Timetable extends React.Component {
         }
     }
 
-    componentDidMount() {
-        this.getDailyTimetable()
-    }
-
     renderContent(data) {
         let content = [];
         let period_counter = 1;
@@ -218,14 +240,36 @@ class Timetable extends React.Component {
         return content;
     }
 
+    componentDidMount() {
+        if (this.getWithExpiry('timetablePersist') != null) {
+            this.setState({ isLoading: false })
+        } else {
+            this.getDailyTimetable();
+        }
+    }
+
     render() {
-        const { data, isLoading } = this.state;
+        const { isLoading } = this.state;
+        const data = this.getWithExpiry('timetablePersist');
         const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 
         return(
             <div className="timetable-container" style={{width: isLoading ? 'auto' : '100%'}}>
                 <div className="header">
                     <div className="timetable-title">Today's Timetable</div>
+                    <IconButton
+                        sx={{
+                            color: '#ECEFF4',
+                            position: 'absolute',
+                            right: '33px',
+                            top: '33px',
+                        }}
+                        size="large"
+                        onClick={() => { this.getDailyTimetable() }}
+                        disableRipple
+                    >
+                        <CachedIcon fontSize="25px"/>
+                    </IconButton>
                     <div className="dayoftheweek">{weekday[new Date().getDay()]}</div>
                 </div>
                 {isLoading ? <Dots /> : (
