@@ -1,6 +1,6 @@
 {
-  "name": "resentral_cordova",
-  "version": "0.3.0",
+  "name": "resentral_react_cordova",
+  "version": "0.4.0",
   "private": true,
   "homepage": "./",
   "dependencies": {
